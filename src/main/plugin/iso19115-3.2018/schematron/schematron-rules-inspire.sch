@@ -616,8 +616,10 @@
 			<sch:let name="accessConstraints" value="string-join(mco:accessConstraints/*/@codeListValue, ', ')"/>
 			<sch:let name="classification" value="string-join(mco:classification/*/@codeListValue, ', ')"/>
 			<sch:let name="otherConstraints" value="mco:otherConstraints/gco:CharacterString/text()"/>
-			<sch:let name="useLimitation" value="mco:useLimitation/*/text()"/>
-			<sch:let name="useLimitation_count" value="count(mco:useLimitation/*/text())"/>
+			<!-- <sch:let name="useLimitation" value="mco:useLimitation/*/text()"/> -->
+			<sch:let name="useLimitation" value="//mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/mco:MD_LegalConstraints/mco:useLimitation/gco:CharacterString/text()"/>
+			<!-- <sch:let name="useLimitation_count" value="count(mco:useLimitation/*/text())"/> -->
+			<sch:let name="useLimitation_count" value="count(//mri:resourceConstraints/*/mco:useLimitation/gco:CharacterString/text())"/>
 			<sch:report test="$accessConstraints!=''" diagnostics="rule.constraints-mco-accessConstraints-success-en rule.constraints-mco-accessConstraints-success-fr"/>
 			<sch:report test="$classification!=''" diagnostics="rule.constraints-classification-success-en rule.constraints-classification-success-fr"/>
 			<sch:assert test="$useLimitation_count" diagnostics="rule.constraints-useLimitation-failure-en rule.constraints-useLimitation-failure-fr"/>
