@@ -609,10 +609,10 @@
 			<sch:report test="$otherConstraintInfo!='' and not($accessConstraints) and not($otherConstraints)" diagnostics="rule.constraints-allConstraints-success-en rule.constraints-allConstraints-success-fr"/>
 		</sch:rule>
 		
-		 <sch:rule context="//mdb:identificationInfo/* |
-                        //*[@gco:isoType='mdb:identificationInfo']/*|
-                        //srv:SV_ServiceIdentification/*|
-                        //*[@gco:isoType='srv:SV_ServiceIdentification']/*">
+		 <sch:rule context="//mdb:identificationInfo |
+                        //*[@gco:isoType='mdb:identificationInfo']|
+                        //srv:SV_ServiceIdentification|
+                        //*[@gco:isoType='srv:SV_ServiceIdentification']">
                         <sch:let name="accessConstraints" value="string-join(mco:accessConstraints/*/@codeListValue, ', ')"/>
                         <sch:let name="classification" value="string-join(mco:classification/*/@codeListValue, ', ')"/>
                         <sch:let name="otherConstraints" value="mco:otherConstraints/gco:CharacterString/text()"/>
